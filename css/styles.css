@@ -1,12 +1,36 @@
 .form{
+    z-index: 1;
     width: 50%;
     margin-left: 25%;
     margin-top: 30px;
 }
 
 .logo{
+    z-index: 1;
     margin-left: 45%;
     margin-top: 20px;
+}
+
+.keyword:hover{
+    transition: 0s;
+    opacity: 1;
+    color: red;
+}
+
+.keyword{
+    transition: 20s;
+    color: lightgrey;
+}
+
+.text{
+    text-align: center;
+    z-index: -1;
+    position: fixed;
+    line-height: 1; 
+    font-size: 20px; 
+    font-family: 'Courier New', Courier, monospace; 
+    color: lightgray;
+    opacity: 0.6;
 }
 
 .success{
