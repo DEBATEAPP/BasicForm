@@ -30,9 +30,9 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_DEBUG: false
-          CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
-          CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
-          PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+          envkey_CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
+          envkey_CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
+          envkey_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
           directory: BasicForm
           file_name: .env
           fail_on_empty: false
