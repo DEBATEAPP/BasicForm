@@ -21,6 +21,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  create-envfile:
+
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: false
+          CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
+          CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
+          PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
+          directory: BasicForm
+          file_name: .env
+          fail_on_empty: false
   # Single deploy job since we're just deploying
   deploy:
     environment:
@@ -28,15 +43,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        run: |
-          touch .env
-          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
-          echo API_KEY=${{ secrets.API_KEY }} >> .env
-          echo CONTACT_FORM: ${{ secrets.CONTACT_FORM }} >> .env
-          echo CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }} >> .env
-          echo PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }} >> .env
-          cat .env
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
