@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DEBATE.</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/logo.png" />
+
+    <script>require('dotenv').config();</script>
+
+    <script src="https://kit.fontawesome.com/37263448cf.js" crossorigin="anonymous"></script>
+    <!-- CSS Style Sheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=1.9.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+
+    <script type="text/javascript" src="resources/scripts/bg-animation.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init(process.env.PUBLIC_KEY);
+        })();
+    </script>
+    <script type="text/javascript">
+
+        function myFunction() {
+            window.location.replace("success.html");
+        }
+
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm(process.env.CONTACT_SERVICE, process.env.CONTACT_FORM, this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="logo">
+        <img src="images/logo.png" alt="LOGO" width="20%" height="20%">
+        <!-- <h1 class="title">DEBATE.</h1> -->
+    </div>
+    <form id="contact-form" class="form" onsubmit="myFunction()">
+        <input type="hidden" name="contact_number">
+        <!-- Name input -->
+        <div class="form-outline mb-4" style="width: 100%">
+            <div class="label">
+                <label style="font-size: 24px; font-family: 'Courier New', Courier, monospace;">Name</label>
+            </div>
+            <div>
+                <input id="name" name="user_name" type="text" class="form-control noselect"
+                style="background: rgba(255, 255, 255, 0.1); color: black; width: 100%; font-size: 20px; font-family: 'Courier New', Courier, monospace; border-color: black;" />
+            </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4" style="width: 100%">
+            <div class="label">
+                <label style="font-size: 24px; font-family: 'Courier New', Courier, monospace;">Email</label>
+            </div>
+            <div>
+                <input id="email" name="user_email" type="email" class="form-control"
+                style="background: rgba(255, 255, 255, 0.1); color: black; font-size: 20px; font-family: 'Courier New', Courier, monospace; border-color: black;" />
+            </div>
+        </div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4" style="width: 100%">
+            <div class="label">
+                <label style="font-size: 24px; font-family: 'Courier New', Courier, monospace;">Message</label>
+            </div>
+            <div>
+                <textarea id="message" name="message" class="form-control" rows="6"
+                style="background: rgba(255, 255, 255, 0.1); color: black; font-size: 20px; font-family: 'Courier New', Courier, monospace; border-color: black;"></textarea>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <input type="submit" value="Send" style="width: 40%; display: inline-block; margin-right:5px; font-size: 20px; font-family: 'Courier New', Courier, monospace; background-color: white; color: black; background-color: white; font-size: 20px; font-family: 'Courier New', Courier, monospace; border-radius: 10px;">
+        </div>
+
+    </form>
+</body>
+</html>
