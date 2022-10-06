@@ -1,4 +1,4 @@
-# DEBATE Feedback Form
+# DEBATE Form
 
 Link: https://debateapp.github.io/BasicForm/
 
