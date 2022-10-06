@@ -10,11 +10,6 @@ jobs:
 
     steps:
     - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.3
-      with:
-        envkey_DEBUG: false
-        envkey_CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
-        envkey_CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
-        envkey_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        directory: BasicForm/
-        file_name: .env
+        echo "${{ secrets.CONTACT_FORM }}" > .env
+        echo "${{ secrets.CONTACT_SERVICE }}" > .env
+        echo "${{ secrets.PUBLIC_KEY }}" > .env
