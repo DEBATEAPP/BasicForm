@@ -16,5 +16,5 @@ jobs:
         envkey_CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
         envkey_CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
         envkey_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        directory: ${{ github.workspace }}/.env
+        directory: BasicForm/.env
         file_name: .env
