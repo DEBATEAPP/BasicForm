@@ -7,7 +7,7 @@ jobs:
   create-envfile:
  
     runs-on: ubuntu-latest
- 
+
     steps:
     - name: Make envfile
       uses: SpicyPizza/create-envfile@v1.3
@@ -16,5 +16,5 @@ jobs:
         envkey_CONTACT_FORM: ${{ secrets.CONTACT_FORM }}
         envkey_CONTACT_SERVICE: ${{ secrets.CONTACT_SERVICE }}
         envkey_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        directory: BasicForm/
+        directory: ${{ github.workspace }}/.env
         file_name: .env
