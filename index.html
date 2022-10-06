@@ -33,34 +33,6 @@
 
     <script type="text/javascript" src="resources/scripts/bg-animation.js"></script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init('T2PnponEyKgfAceVz');
-        })();
-    </script>
-    <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                // generate a five digit number for the contact_number variable
-                this.contact_number.value = Math.random() * 100000 | 0;
-                // these IDs from the previous steps
-                emailjs.sendForm('service_rnso0lb', 'template_ya4o9xn', this)
-                    .then(function() {
-                        console.log('SUCCESS!');
-                        myFunction();
-                    }, function(error) {
-                        console.log('FAILED...', error);
-                    });
-            });
-        }
-
-        function myFunction() {
-            window.location.replace("success.html");
-        }
-    </script>
 </head>
 <body>
     <p class="text">
@@ -188,4 +160,30 @@
 
     </form>
 </body>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init('T2PnponEyKgfAceVz');
+    })();
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // generate a five digit number for the contact_number variable
+            this.contact_number.value = Math.random() * 100000 | 0;
+            // these IDs from the previous steps
+            emailjs.sendForm('service_rnso0lb', 'template_ya4o9xn', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                    window.location.replace("success.html");
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+    }
+
+</script>
+
 </html>
