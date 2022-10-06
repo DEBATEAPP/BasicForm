@@ -18,3 +18,4 @@ jobs:
         envkey_PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         directory: BasicForm/
         file_name: .env
+        fail_on_empty: false
